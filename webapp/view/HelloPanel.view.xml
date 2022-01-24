@@ -1,0 +1,52 @@
+<mvc:View
+   controllerName="sap.ui.demo.walkthrough.controller.HelloPanel"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc">
+   <Panel
+      headerText="{i18n>helloPanelTitle}"
+      class="sapUiResponsiveMargin"
+      width="auto" >
+      <content>
+         <Button
+         id="helloDialogButton"
+         icon="sap-icon://world"
+         text="{i18n>openDialogButtonText}"
+         press=".onOpenDialog"
+         class="sapUiSmallMarginEnd"/>
+
+         <Button
+            text="{i18n>showHelloButtonText}"
+            press=".onShowHello"
+            class="myCustomButton"/>
+         <Input
+            value="{/recipient/name}"
+            valueLiveUpdate="true"
+            width="60%"/>
+         <FormattedText
+            htmlText="Hello {/recipient/name}"
+            class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+         <Button text="Say hello" 
+         press="doClick" 
+         id ="_clicksCounter"/>
+         <!-- <Button text="Say hello" 
+         press="handleButtonPress" 
+         id ="button"/> -->
+         <Button text="+" 
+         press="clickModelInc" 
+         id ="_clickModelInc"/>
+         <FormattedText
+            htmlText="{/recipient/counter}"
+            class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+         <Button text="-" 
+         press="clickModelDec" 
+         id ="_clickModelDec"/>
+         <Input
+            value="{/recipient/step}"
+            valueState="{/recipient/state}"
+            valueStateText="{/recipient/stateText}"
+            valueLiveUpdate="true"
+            liveChange = "onLiveChange"
+            width="60%"/>
+      </content>
+   </Panel>
+</mvc:View>
