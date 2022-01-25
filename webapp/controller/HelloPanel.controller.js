@@ -165,22 +165,34 @@ sap.ui.define([
             var oModel = this.getView().getModel();
             var iStep = oModel.getProperty("/recipient/step");
             //var sState = oModel.getProperty("/recipient/state");
-            
+
             if (isNaN(iStep)==true) {
                 oInput.setValueState(ValueState.Error);
                 if (this.ValueState==ValueState.Error) {
                     return this.ValueState;
-                } else {
+                } else if (this.ValueState!==ValueState.Error || iStep=="") {
                     oModel.setProperty("/recipient/state", ValueState.Error);
-                    oModel.setProperty("/recipient/stateText", "Неправильный ввод");
+                    oModel.setProperty("/recipient/stateText", "Неправильный или пустой ввод");
                 }
-            } else if (iStep=="") {
-                oModel.setProperty("/recipient/state", ValueState.Error);
-                oModel.setProperty("/recipient/stateText", "Пустой ввод");
             } else {
                 oInput.setValueState(ValueState.Success);
                 oModel.setProperty("/recipient/state", ValueState.Success);
-                // oModel.setProperty("/recipient/stateText", "Всё правильно :)");
+            
+            // if (isNaN(iStep)==true) {
+            //     oInput.setValueState(ValueState.Error);
+            //     if (this.ValueState==ValueState.Error) {
+            //         return this.ValueState;
+            //     } else {
+            //         oModel.setProperty("/recipient/state", ValueState.Error);
+            //         oModel.setProperty("/recipient/stateText", "Неправильный ввод");
+            //     }
+            // } else if (iStep=="") {
+            //     oModel.setProperty("/recipient/state", ValueState.Error);
+            //     oModel.setProperty("/recipient/stateText", "Пустой ввод");
+            // } else {
+            //     oInput.setValueState(ValueState.Success);
+            //     oModel.setProperty("/recipient/state", ValueState.Success);
+            //     // oModel.setProperty("/recipient/stateText", "Всё правильно :)");
             }
         }
     })
